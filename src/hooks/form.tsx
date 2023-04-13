@@ -10,7 +10,7 @@ export const enum FormAction {
 }
 
 export const useFormAction = (
-  submittable: any,
+  submittable: unknown,
   submit: () => void,
   cancel: () => void
 ): [
