@@ -1,5 +1,5 @@
 import { Fragment, useCallback, useMemo } from 'react';
-import { Text } from 'ink';
+import { Text, useInput } from 'ink';
 
 import { type Item, type Renderer } from '../components/SelectInput.js';
 import { TextInput } from '../components/TextInput.js';
@@ -10,7 +10,7 @@ export const enum FormAction {
 }
 
 export const useFormAction = (
-  submittable: boolean,
+  submittable: any,
   submit: () => void,
   cancel: () => void
 ): [
@@ -23,9 +23,9 @@ export const useFormAction = (
       () => ({
         key: FormAction.SUBMIT,
         value: () => <Text color="cyan">Submit</Text>,
-        enabled: submittable,
+        enabled: !!submittable,
       }),
-      [submittable]
+      [!submittable]
     ),
     useMemo(
       () => ({
@@ -73,3 +73,12 @@ export const useFormField = (
     }),
     []
   );
+
+export const useOnBack = (back: () => void) => {
+  useInput((_input, key) => {
+    if (key.escape) {
+      back();
+    }
+  });
+  return back;
+};
