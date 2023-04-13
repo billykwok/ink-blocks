@@ -1,0 +1,71 @@
+{
+  "name": "ink-blocks",
+  "version": "0.0.1",
+  "description": "Building Blocks for Ink CLI",
+  "keywords": [
+    "ink",
+    "cli",
+    "react"
+  ],
+  "author": "Billy Kwok <opensource@billykwok.me>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/billykwok/ink-blocks"
+  },
+  "bugs": {
+    "url": "https://github.com/billykwok/ink-blocks/issues"
+  },
+  "homepage": "https://github.com/billykwok/ink-blocks",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "main": "./build/index.cjs",
+  "types": "./build/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/index.d.ts",
+      "import": "./build/index.mjs",
+      "require": "./build/index.cjs"
+    }
+  },
+  "files": [
+    "build/"
+  ],
+  "scripts": {
+    "clean": "rimraf build",
+    "lint": "eslint --ext .ts,.tsx src/**",
+    "compile": "vite build",
+    "typed": "tsc --project tsconfig.types.json",
+    "build": "npm run lint && npm run clean && npm run compile && npm run typed"
+  },
+  "resolutions": {
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "figures": "^5.0.0",
+    "ink": "^4.1.0",
+    "ink-text-input": "^5.0.1"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.1",
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.35",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
+    "@typescript-eslint/parser": "^5.58.0",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "prettier": "^2.8.7",
+    "react": "^18.2.0",
+    "rimraf": "^5.0.0",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.4",
+    "vite": "^4.2.1"
+  }
+}
